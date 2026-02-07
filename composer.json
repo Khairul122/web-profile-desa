@@ -1,0 +1,15 @@
+{
+    "name": "user/web-desa",
+    "autoload": {
+        "psr-4": {
+            "User\\WebDesa\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Khairul122",
+            "email": "khairulhuda242@gmail.com"
+        }
+    ],
+    "require": {}
+}

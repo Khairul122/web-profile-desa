@@ -1,0 +1,11 @@
+# Aktifkan mod_rewrite
+RewriteEngine On
+
+# Aturan untuk membersihkan URL
+# Jika direktori atau file ada, gunakan langsung
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^.*$ - [NC,L]
+
+# Jika tidak, arahkan ke index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,NC,L]
