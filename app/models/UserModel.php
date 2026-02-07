@@ -1,7 +1,8 @@
 <?php
 namespace User\WebDesa\Models;
 
-use User\WebDesa\Core\Database;
+// Load kelas Database secara manual
+require_once __DIR__ . '/../core/Database.php';
 
 /**
  * Model untuk manajemen user
@@ -12,7 +13,7 @@ class UserModel
     
     public function __construct()
     {
-        $this->db = new Database;
+        $this->db = new \User\WebDesa\Core\Database;
     }
     
     /**
@@ -26,53 +27,84 @@ class UserModel
     }
     
     /**
-     * Method untuk cek login
+     * Method untuk mendapatkan semua user
      */
-    public function cekLogin($username, $password)
+    public function getAllUsers()
     {
-        $user = $this->getUserByUsername($username);
-        
-        if ($user) {
-            // Verifikasi password
-            if (password_verify($password, $user['password'])) {
-                // Simpan informasi user ke session
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                $_SESSION['role'] = $user['role'];
-                
-                return true;
-            }
-        }
-        
-        return false;
+        $this->db->query('SELECT * FROM users');
+        return $this->db->resultSet();
     }
     
     /**
-     * Method untuk cek apakah user sudah login
+     * Method untuk menambah user baru
      */
-    public function isLoggedin()
+    public function tambahUser($data)
     {
-        return isset($_SESSION['user_id']);
-    }
-    
-    /**
-     * Method untuk mendapatkan role user yang sedang login
-     */
-    public function getUserRole()
-    {
-        return $_SESSION['role'] ?? null;
-    }
-    
-    /**
-     * Method untuk logout
-     */
-    public function logout()
-    {
-        unset($_SESSION['user_id']);
-        unset($_SESSION['username']);
-        unset($_SESSION['role']);
+        $query = "INSERT INTO users (username, password, email, no_hp, nama_lengkap, role, is_active) VALUES (:username, :password, :email, :no_hp, :nama_lengkap, :role, :is_active)";
         
-        session_destroy();
-        return true;
+        $this->db->query($query);
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':password', hash('sha256', $data['password'])); // Hash password dengan SHA-256
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':no_hp', $data['no_hp']);
+        $this->db->bind(':nama_lengkap', $data['nama_lengkap']);
+        $this->db->bind(':role', $data['role']);
+        $this->db->bind(':is_active', $data['is_active']);
+        
+        $this->db->execute();
+        
+        return $this->db->rowCount();
+    }
+    
+    /**
+     * Method untuk update data user
+     */
+    public function updateUser($data)
+    {
+        $query = "UPDATE users SET username=:username, email=:email, no_hp=:no_hp, nama_lengkap=:nama_lengkap, role=:role, is_active=:is_active WHERE id_user=:id";
+        
+        $this->db->query($query);
+        $this->db->bind(':id', $data['id_user']);
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':no_hp', $data['no_hp']);
+        $this->db->bind(':nama_lengkap', $data['nama_lengkap']);
+        $this->db->bind(':role', $data['role']);
+        $this->db->bind(':is_active', $data['is_active']);
+        
+        $this->db->execute();
+        
+        return $this->db->rowCount();
+    }
+    
+    /**
+     * Method untuk update password
+     */
+    public function updatePassword($id, $password)
+    {
+        $query = "UPDATE users SET password=:password WHERE id_user=:id";
+        
+        $this->db->query($query);
+        $this->db->bind(':id', $id);
+        $this->db->bind(':password', hash('sha256', $password)); // Hash password dengan SHA-256
+        
+        $this->db->execute();
+        
+        return $this->db->rowCount();
+    }
+    
+    /**
+     * Method untuk hapus user
+     */
+    public function deleteUser($id)
+    {
+        $query = "DELETE FROM users WHERE id_user = :id";
+        
+        $this->db->query($query);
+        $this->db->bind(':id', $id);
+        
+        $this->db->execute();
+        
+        return $this->db->rowCount();
     }
 }

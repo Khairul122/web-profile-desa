@@ -1,34 +1,44 @@
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Selamat Datang di Website Profil Desa</h1>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">Portal informasi resmi desa untuk masyarakat, pemerintah, dan stakeholder lainnya.</p>
-        <div class="flex justify-center space-x-4">
-            <a href="#profil" class="bg-white text-blue-800 hover:bg-gray-100 font-bold py-2 px-6 rounded-full transition duration-300">Profil Desa</a>
-            <a href="#layanan" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 font-bold py-2 px-6 rounded-full transition duration-300">Layanan</a>
+<section class="bg-gradient-to-r from-primary to-info text-white py-5">
+    <div class="container">
+        <div class="row justify-content-center text-center py-5">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-3">Selamat Datang di Website Profil Desa</h1>
+                <p class="lead mb-4">Portal informasi resmi desa untuk masyarakat, pemerintah, dan stakeholder lainnya.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#profil" class="btn btn-light text-primary fw-bold px-4">Profil Desa</a>
+                    <a href="#layanan" class="btn btn-outline-light fw-bold px-4">Layanan</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Sambutan Kepala Desa -->
-<section id="profil" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800">Sambutan Kepala Desa</h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mt-2"></div>
+<section id="profil" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Sambutan Kepala Desa</h2>
+            <hr class="w-25 mx-auto bg-primary">
         </div>
         
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
-                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-48 h-48" />
-                </div>
-                <div class="md:w-2/3 md:pl-8 text-gray-700">
-                    <p class="mb-4 italic">"Assalamu'alaikum Wr. Wb."</p>
-                    <p class="mb-4">Puji syukur kita panjatkan ke hadirat Allah SWT, yang telah melimpahkan rahmat dan karunia-Nya sehingga Website Profil Desa ini dapat kami hadirkan sebagai sarana informasi dan pelayanan kepada masyarakat.</p>
-                    <p class="mb-4">Melalui website ini, kami berharap dapat meningkatkan transparansi, akuntabilitas, dan efisiensi pelayanan kepada masyarakat. Kami juga berharap website ini dapat menjadi media komunikasi dua arah antara pemerintah desa dengan masyarakat.</p>
-                    <p class="font-bold">Kepala Desa</p>
-                    <p class="font-bold">Nama Kepala Desa</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-sm border-0">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-4 text-center p-4">
+                            <div class="bg-light border rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 200px; height: 200px;">
+                                <i class="fas fa-user text-secondary" style="font-size: 5rem;"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 p-4">
+                            <p class="fst-italic">"Assalamu'alaikum Wr. Wb."</p>
+                            <p class="mb-3">Puji syukur kita panjatkan ke hadirat Allah SWT, yang telah melimpahkan rahmat dan karunia-Nya sehingga Website Profil Desa ini dapat kami hadirkan sebagai sarana informasi dan pelayanan kepada masyarakat.</p>
+                            <p class="mb-3">Melalui website ini, kami berharap dapat meningkatkan transparansi, akuntabilitas, dan efisiensi pelayanan kepada masyarakat. Kami juga berharap website ini dapat menjadi media komunikasi dua arah antara pemerintah desa dengan masyarakat.</p>
+                            <p class="fw-bold">Kepala Desa</p>
+                            <p class="fw-bold">Nama Kepala Desa</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,121 +46,194 @@
 </section>
 
 <!-- Statistik Penduduk -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800">Statistik Penduduk</h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mt-2"></div>
+<section class="py-5 bg-white">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Statistik Penduduk</h2>
+            <hr class="w-25 mx-auto bg-primary">
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-blue-50 rounded-lg p-6 text-center shadow-md">
-                <div class="text-4xl font-bold text-blue-700 mb-2">1,250</div>
-                <div class="text-gray-700">Jumlah Penduduk</div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="card bg-primary bg-opacity-10 border-0 text-center p-4">
+                    <div class="display-5 fw-bold text-primary">1,250</div>
+                    <div class="text-dark">Jumlah Penduduk</div>
+                </div>
             </div>
             
-            <div class="bg-green-50 rounded-lg p-6 text-center shadow-md">
-                <div class="text-4xl font-bold text-green-700 mb-2">450</div>
-                <div class="text-gray-700">Kepala Keluarga</div>
+            <div class="col-md-3 col-6">
+                <div class="card bg-success bg-opacity-10 border-0 text-center p-4">
+                    <div class="display-5 fw-bold text-success">450</div>
+                    <div class="text-dark">Kepala Keluarga</div>
+                </div>
             </div>
             
-            <div class="bg-yellow-50 rounded-lg p-6 text-center shadow-md">
-                <div class="text-4xl font-bold text-yellow-700 mb-2">25%</div>
-                <div class="text-gray-700">Penduduk Muda</div>
+            <div class="col-md-3 col-6">
+                <div class="card bg-warning bg-opacity-10 border-0 text-center p-4">
+                    <div class="display-5 fw-bold text-warning">25%</div>
+                    <div class="text-dark">Penduduk Muda</div>
+                </div>
             </div>
             
-            <div class="bg-purple-50 rounded-lg p-6 text-center shadow-md">
-                <div class="text-4xl font-bold text-purple-700 mb-2">12</div>
-                <div class="text-gray-700">RW</div>
+            <div class="col-md-3 col-6">
+                <div class="card bg-danger bg-opacity-10 border-0 text-center p-4">
+                    <div class="display-5 fw-bold text-danger">12</div>
+                    <div class="text-dark">RW</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Berita Terkini -->
-<section id="berita" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800">Berita Terkini</h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mt-2"></div>
+<section id="berita" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Berita Terkini</h2>
+            <hr class="w-25 mx-auto bg-primary">
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="row g-4">
             <!-- Berita 1 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                <div class="bg-gray-200 border-2 border-dashed w-full h-48" />
-                <div class="p-6">
-                    <span class="text-sm text-gray-500">15 Januari 2026</span>
-                    <h3 class="text-xl font-bold mt-2 mb-3 text-gray-800">Pembangunan Balai Desa Tahap II Dimulai</h3>
-                    <p class="text-gray-600 mb-4">Pembangunan tahap II balai desa akan segera dimulai dengan anggaran dari dana desa tahun ini.</p>
-                    <a href="#" class="text-blue-600 font-medium hover:underline">Baca selengkapnya →</a>
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="bg-light border-bottom" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-newspaper text-secondary" style="font-size: 5rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <small class="text-muted">15 Januari 2026</small>
+                        <h5 class="card-title mt-2">Pembangunan Balai Desa Tahap II Dimulai</h5>
+                        <p class="card-text">Pembangunan tahap II balai desa akan segera dimulai dengan anggaran dari dana desa tahun ini.</p>
+                        <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                    </div>
                 </div>
             </div>
             
             <!-- Berita 2 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                <div class="bg-gray-200 border-2 border-dashed w-full h-48" />
-                <div class="p-6">
-                    <span class="text-sm text-gray-500">10 Januari 2026</span>
-                    <h3 class="text-xl font-bold mt-2 mb-3 text-gray-800">Pelatihan Kewirausahaan untuk Pemuda</h3>
-                    <p class="text-gray-600 mb-4">Desa mengadakan pelatihan kewirausahaan untuk meningkatkan kemandirian ekonomi pemuda.</p>
-                    <a href="#" class="text-blue-600 font-medium hover:underline">Baca selengkapnya →</a>
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="bg-light border-bottom" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-graduation-cap text-secondary" style="font-size: 5rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <small class="text-muted">10 Januari 2026</small>
+                        <h5 class="card-title mt-2">Pelatihan Kewirausahaan untuk Pemuda</h5>
+                        <p class="card-text">Desa mengadakan pelatihan kewirausahaan untuk meningkatkan kemandirian ekonomi pemuda.</p>
+                        <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                    </div>
                 </div>
             </div>
             
             <!-- Berita 3 -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-md">
-                <div class="bg-gray-200 border-2 border-dashed w-full h-48" />
-                <div class="p-6">
-                    <span class="text-sm text-gray-500">5 Januari 2026</span>
-                    <h3 class="text-xl font-bold mt-2 mb-3 text-gray-800">Posyandu Bulan Ini Berlangsung Meriah</h3>
-                    <p class="text-gray-600 mb-4">Kegiatan posyandu bulan ini dihadiri oleh banyak warga dengan antusiasme tinggi.</p>
-                    <a href="#" class="text-blue-600 font-medium hover:underline">Baca selengkapnya →</a>
+            <div class="col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="bg-light border-bottom" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-heartbeat text-secondary" style="font-size: 5rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <small class="text-muted">5 Januari 2026</small>
+                        <h5 class="card-title mt-2">Posyandu Bulan Ini Berlangsung Meriah</h5>
+                        <p class="card-text">Kegiatan posyandu bulan ini dihadiri oleh banyak warga dengan antusiasme tinggi.</p>
+                        <a href="#" class="btn btn-primary">Baca selengkapnya</a>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div class="text-center mt-12">
-            <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">Lihat Semua Berita</a>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary btn-lg">Lihat Semua Berita</a>
         </div>
     </div>
 </section>
 
 <!-- Layanan Desa -->
-<section id="layanan" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-gray-800">Layanan Desa</h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mt-2"></div>
+<section id="layanan" class="py-5 bg-white">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-dark">Layanan Desa</h2>
+            <hr class="w-25 mx-auto bg-primary">
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-file-alt text-blue-600 text-2xl"></i>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 text-center shadow-sm border-0 p-4 animate-card">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 animate-icon" style="width: 80px; height: 80px;">
+                        <i class="fas fa-file-alt text-primary" style="font-size: 2rem;"></i>
+                    </div>
+                    <h5 class="card-title">Surat Keterangan</h5>
+                    <p class="card-text">Permohonan berbagai jenis surat keterangan dari desa</p>
+                    <a href="#" class="btn btn-outline-primary">Ajukan</a>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Surat Keterangan</h3>
-                <p class="text-gray-600 mb-4">Permohonan berbagai jenis surat keterangan dari desa</p>
-                <a href="#" class="text-blue-600 font-medium hover:underline">Ajukan →</a>
             </div>
             
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-users text-green-600 text-2xl"></i>
+            <div class="col-md-4">
+                <div class="card h-100 text-center shadow-sm border-0 p-4 animate-card">
+                    <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 animate-icon" style="width: 80px; height: 80px;">
+                        <i class="fas fa-users text-success" style="font-size: 2rem;"></i>
+                    </div>
+                    <h5 class="card-title">Data Penduduk</h5>
+                    <p class="card-text">Informasi dan permohonan terkait data kependudukan</p>
+                    <a href="#" class="btn btn-outline-success">Lihat</a>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Data Penduduk</h3>
-                <p class="text-gray-600 mb-4">Informasi dan permohonan terkait data kependudukan</p>
-                <a href="#" class="text-blue-600 font-medium hover:underline">Lihat →</a>
             </div>
             
-            <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
-                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-lightbulb text-yellow-600 text-2xl"></i>
+            <div class="col-md-4">
+                <div class="card h-100 text-center shadow-sm border-0 p-4 animate-card">
+                    <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4 animate-icon" style="width: 80px; height: 80px;">
+                        <i class="fas fa-lightbulb text-warning" style="font-size: 2rem;"></i>
+                    </div>
+                    <h5 class="card-title">Pengaduan</h5>
+                    <p class="card-text">Laporkan masalah atau sampaikan aspirasi Anda</p>
+                    <a href="#" class="btn btn-outline-warning">Laporkan</a>
                 </div>
-                <h3 class="text-xl font-bold mb-2 text-gray-800">Pengaduan</h3>
-                <p class="text-gray-600 mb-4">Laporkan masalah atau sampaikan aspirasi Anda</p>
-                <a href="#" class="text-blue-600 font-medium hover:underline">Laporkan →</a>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Script untuk animasi halaman home -->
+<script>
+    // Animasi tambahan menggunakan Anime.js
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animasi untuk kartu layanan
+        anime({
+            targets: '.animate-card',
+            translateY: [-20, 0],
+            opacity: [0, 1],
+            scale: [0.9, 1],
+            delay: anime.stagger(200, {start: 300}),
+            duration: 1000,
+            easing: 'easeOutElastic(1, .8)'
+        });
+        
+        // Animasi untuk ikon
+        anime({
+            targets: '.animate-icon',
+            scale: [{value: 0.8}, {value: 1.1}, {value: 1}],
+            delay: anime.stagger(200, {start: 500}),
+            duration: 1500,
+            easing: 'easeInOutQuad',
+            loop: false
+        });
+        
+        // Animasi untuk elemen berita
+        anime({
+            targets: '.card',
+            translateY: [50, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(100),
+            duration: 800,
+            easing: 'easeOutCubic'
+        });
+        
+        // Animasi untuk statistik
+        anime({
+            targets: '.display-5',
+            innerHTML: [0, el => parseInt(el.textContent)],
+            round: 1,
+            delay: anime.stagger(200, {start: 500}),
+            duration: 2000,
+            easing: 'easeOutQuad'
+        });
+    });
+</script>

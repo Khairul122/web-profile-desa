@@ -1,9 +1,10 @@
 <?php
 namespace User\WebDesa\Controllers;
 
-use User\WebDesa\Core\Controller;
+// Load kelas Controller secara manual
+require_once __DIR__ . '/../core/Controller.php';
 
-class DashboardController extends Controller
+class DashboardController extends \User\WebDesa\Core\Controller
 {
     /**
      * Method untuk dashboard admin

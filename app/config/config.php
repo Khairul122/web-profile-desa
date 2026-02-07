@@ -14,4 +14,6 @@ define('BASE_URL', 'http://localhost/web-desa');
 define('BASE_PATH', dirname(dirname(__DIR__)));
 
 // Konfigurasi session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
