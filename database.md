@@ -9,6 +9,8 @@ nama_lengkap,VARCHAR(100),Nama asli pengguna.
 role,ENUM,"Pilihan peran: 'kepdes', 'admin', 'sekdes'."
 is_active,BOOLEAN,"Status akun (1 untuk aktif, 0 untuk nonaktif)."
 
+Tabel berita
+
 
 Note:
 1. Struktur database yang tercantum dalam dokumen ini telah diimplementasikan. Skema ini wajib digunakan sebagai referensi utama dan pedoman dalam pengembangan sistem.

@@ -1,188 +1,249 @@
-<div class="container-fluid py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard Sekretaris</h1>
-        <div class="ms-auto">
-            <span class="badge bg-primary">Halo, <?= $_SESSION['username'] ?? 'Sekretaris' ?></span>
-        </div>
-    </div>
-    
-    <div class="row mb-4">
-        <!-- Card untuk surat-menyurat -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="fas fa-envelope-open-text text-primary" style="font-size: 1.5rem;"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Manajemen Surat</h5>
-                            <p class="card-text text-muted">Buat, cetak, dan kelola surat-surat resmi desa.</p>
-                        </div>
+<?php
+// Tampilkan header dashboard
+require_once __DIR__ . '/../templates/dashboard_admin_layout.php';
+?>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted mb-1">Total Surat Hari Ini</p>
+                        <h3 class="fw-bold mb-0">24</h3>
                     </div>
-                    <a href="#" class="btn btn-primary mt-2">Kelola Surat</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Card untuk arsip desa -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-success bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="fas fa-archive text-success" style="font-size: 1.5rem;"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Arsip Desa</h5>
-                            <p class="card-text text-muted">Simpan dan cari dokumen arsip penting desa.</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-success mt-2">Lihat Arsip</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-white py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Statistik Surat</h5>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3 col-6 mb-3 mb-md-0">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Surat Masuk</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">128</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-arrow-down fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                        <i class="fas fa-envelope text-primary" style="font-size: 24px;"></i>
                     </div>
                 </div>
-                
-                <div class="col-md-3 col-6 mb-3 mb-md-0">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Surat Keluar</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">96</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-arrow-up fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-6">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Surat Draft</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">24</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-edit fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-6">
-                    <div class="card border-left-danger shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Perlu Ditindaklanjuti</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="card shadow-sm">
-        <div class="card-header bg-white py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Surat Terbaru</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Nama Surat</th>
-                            <th>Waktu</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Surat Keterangan Usaha - PT Maju Jaya</td>
-                            <td>Baru saja</td>
-                        </tr>
-                        <tr>
-                            <td>Surat Keterangan Domisili - Bapak Suharto</td>
-                            <td>30 menit yang lalu</td>
-                        </tr>
-                        <tr>
-                            <td>Surat Pengantar Nikah - Ibu Siti</td>
-                            <td>2 jam yang lalu</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Script untuk animasi dashboard sekretaris -->
+<div class="row">
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-primary bg-opacity-10 text-primary rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-envelope-open-text" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">128</h3>
+                <p class="text-muted mb-0">Surat Masuk</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-success bg-opacity-10 text-success rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-paper-plane" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">96</h3>
+                <p class="text-muted mb-0">Surat Keluar</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-warning bg-opacity-10 text-warning rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-edit" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">24</h3>
+                <p class="text-muted mb-0">Draft Surat</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-danger bg-opacity-10 text-danger rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">8</h3>
+                <p class="text-muted mb-0">Perlu Ditindaklanjuti</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Statistik Surat</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="suratChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Jenis Surat Terbanyak</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Surat Keterangan</span>
+                    <span class="badge bg-primary">35%</span>
+                </div>
+                <div class="progress mb-3" style="height: 10px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 35%;"></div>
+                </div>
+                
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Surat Pengantar</span>
+                    <span class="badge bg-success">25%</span>
+                </div>
+                <div class="progress mb-3" style="height: 10px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%;"></div>
+                </div>
+                
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Surat Rekomendasi</span>
+                    <span class="badge bg-info">20%</span>
+                </div>
+                <div class="progress mb-3" style="height: 10px;">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%;"></div>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <span>Lainnya</span>
+                    <span class="badge bg-warning">20%</span>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Surat Terbaru</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>No. Surat</th>
+                                <th>Jenis Surat</th>
+                                <th>Pemohon</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SDS-001</td>
+                                <td>Surat Keterangan Usaha</td>
+                                <td>PT Maju Jaya</td>
+                                <td>Baru saja</td>
+                                <td><span class="badge bg-success">Selesai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-success me-1"><i class="fas fa-print"></i></button>
+                                    <button class="btn btn-sm btn-info"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SDS-002</td>
+                                <td>Surat Keterangan Domisili</td>
+                                <td>Bapak Suharto</td>
+                                <td>30 menit yang lalu</td>
+                                <td><span class="badge bg-success">Selesai</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-success me-1"><i class="fas fa-print"></i></button>
+                                    <button class="btn btn-sm btn-info"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SDS-003</td>
+                                <td>Surat Pengantar Nikah</td>
+                                <td>Ibu Siti</td>
+                                <td>2 jam yang lalu</td>
+                                <td><span class="badge bg-warning">Diproses</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-success me-1"><i class="fas fa-print"></i></button>
+                                    <button class="btn btn-sm btn-info"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SDS-004</td>
+                                <td>Surat Keterangan Tidak Mampu</td>
+                                <td>Bapak Joko</td>
+                                <td>3 jam yang lalu</td>
+                                <td><span class="badge bg-danger">Perlu Validasi</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary me-1"><i class="fas fa-eye"></i></button>
+                                    <button class="btn btn-sm btn-success me-1"><i class="fas fa-print"></i></button>
+                                    <button class="btn btn-sm btn-info"><i class="fas fa-download"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Animasi tambahan menggunakan Anime.js
-    document.addEventListener('DOMContentLoaded', function() {
-        // Animasi untuk kartu-kartu dashboard
-        anime({
-            targets: '.card',
-            translateY: [-20, 0],
-            opacity: [0, 1],
-            scale: [0.95, 1],
-            delay: anime.stagger(100),
-            duration: 800,
-            easing: 'easeOutCubic'
-        });
-        
-        // Animasi untuk ikon dalam kartu
-        anime({
-            targets: '.bg-primary\\.bg-opacity-10, .bg-success\\.bg-opacity-10',
-            scale: [{value: 0.8}, {value: 1.1}, {value: 1}],
-            duration: 1000,
-            easing: 'easeInOutQuad',
-            delay: anime.stagger(200, {start: 500}),
-            loop: false
-        });
-        
-        // Animasi untuk statistik
-        anime({
-            targets: '.h5',
-            innerHTML: [0, el => parseInt(el.textContent)],
-            round: 1,
-            duration: 2000,
-            easing: 'easeOutQuad',
-            delay: anime.stagger(300, {start: 1000})
-        });
+    // Chart untuk statistik surat
+    const ctx = document.getElementById('suratChart').getContext('2d');
+    const suratChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
+            datasets: [{
+                label: 'Jumlah Surat',
+                data: [25, 30, 20, 35, 28, 22],
+                backgroundColor: [
+                    'rgba(67, 97, 238, 0.7)',
+                    'rgba(58, 12, 163, 0.7)',
+                    'rgba(67, 97, 238, 0.7)',
+                    'rgba(58, 12, 163, 0.7)',
+                    'rgba(67, 97, 238, 0.7)',
+                    'rgba(58, 12, 163, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(67, 97, 238, 1)',
+                    'rgba(58, 12, 163, 1)',
+                    'rgba(67, 97, 238, 1)',
+                    'rgba(58, 12, 163, 1)',
+                    'rgba(67, 97, 238, 1)',
+                    'rgba(58, 12, 163, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 </script>
+
+<?php
+// Tampilkan footer dashboard
+require_once __DIR__ . '/../templates/dashboard_admin_footer.php';
+?>

@@ -1,188 +1,198 @@
-<div class="container-fluid py-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard Kepala Desa</h1>
-        <div class="ms-auto">
-            <span class="badge bg-primary">Halo, <?= $_SESSION['username'] ?? 'Kepala Desa' ?></span>
-        </div>
-    </div>
-    
-    <div class="row mb-4">
-        <!-- Card untuk laporan statistik -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="fas fa-chart-bar text-primary" style="font-size: 1.5rem;"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Laporan Statistik</h5>
-                            <p class="card-text text-muted">Lihat laporan statistik penduduk dan perkembangan desa.</p>
-                        </div>
+<?php
+// Tampilkan header dashboard
+require_once __DIR__ . '/../templates/dashboard_admin_layout.php';
+?>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-muted mb-1">Jumlah Penduduk</p>
+                        <h3 class="fw-bold mb-0">1,250</h3>
                     </div>
-                    <a href="#" class="btn btn-primary mt-2">Lihat Laporan</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Card untuk validasi surat -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="bg-success bg-opacity-10 rounded-circle p-3 me-3">
-                            <i class="fas fa-file-signature text-success" style="font-size: 1.5rem;"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Validasi Surat</h5>
-                            <p class="card-text text-muted">Verifikasi dan validasi surat-surat yang diajukan.</p>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-success mt-2">Validasi Surat</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="card shadow-sm mb-4">
-        <div class="card-header bg-white py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Statistik Desa</h5>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3 col-6 mb-3 mb-md-0">
-                    <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Penduduk</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">1,250</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-users fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="bg-primary bg-opacity-10 rounded-circle p-3">
+                        <i class="fas fa-users text-primary" style="font-size: 24px;"></i>
                     </div>
                 </div>
-                
-                <div class="col-md-3 col-6 mb-3 mb-md-0">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah KK</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">45</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-home fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-6">
-                    <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Penduduk Muda</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">25%</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-user-clock fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-6">
-                    <div class="card border-left-danger shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Penduduk Dewasa</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">75%</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-user-check fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="card shadow-sm">
-        <div class="card-header bg-white py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Aktivitas Terbaru</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Kegiatan</th>
-                            <th>Waktu</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Pengajuan Surat Keterangan Usaha</td>
-                            <td>2 jam yang lalu</td>
-                        </tr>
-                        <tr>
-                            <td>Laporan Pembangunan Jalan</td>
-                            <td>1 hari yang lalu</td>
-                        </tr>
-                        <tr>
-                            <td>Permohonan Surat Keterangan Domisili</td>
-                            <td>2 hari yang lalu</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Script untuk animasi dashboard kepala desa -->
+<div class="row">
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-primary bg-opacity-10 text-primary rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-users" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">450</h3>
+                <p class="text-muted mb-0">Kepala Keluarga</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-success bg-opacity-10 text-success rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-home" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">45</h3>
+                <p class="text-muted mb-0">RT</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-warning bg-opacity-10 text-warning rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-user-clock" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">25%</h3>
+                <p class="text-muted mb-0">Penduduk Muda</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <div class="bg-danger bg-opacity-10 text-danger rounded-circle mx-auto p-3 mb-3">
+                    <i class="fas fa-user-check" style="font-size: 24px;"></i>
+                </div>
+                <h3 class="fw-bold">75%</h3>
+                <p class="text-muted mb-0">Penduduk Dewasa</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Statistik Penduduk</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="populationChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Validasi Surat</h5>
+            </div>
+            <div class="card-body">
+                <div class="progress mb-3" style="height: 10px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="mb-1"><i class="fas fa-check-circle text-success me-2"></i>Disetujui: <strong>60</strong></p>
+                <p class="mb-1"><i class="fas fa-clock text-warning me-2"></i>Diproses: <strong>15</strong></p>
+                <p class="mb-0"><i class="fas fa-times-circle text-danger me-2"></i>Ditolak: <strong>5</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Aktivitas Terbaru</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Jenis Surat</th>
+                                <th>Pemohon</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Surat Keterangan Usaha</td>
+                                <td>Budi Santoso</td>
+                                <td>Baru saja</td>
+                                <td><span class="badge bg-success">Disetujui</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Surat Keterangan Domisili</td>
+                                <td>Siti Nurhaliza</td>
+                                <td>2 jam yang lalu</td>
+                                <td><span class="badge bg-success">Disetujui</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Surat Pengantar Nikah</td>
+                                <td>Ahmad Fauzi</td>
+                                <td>1 hari yang lalu</td>
+                                <td><span class="badge bg-warning">Diproses</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Surat Keterangan Tidak Mampu</td>
+                                <td>Rina Kartika</td>
+                                <td>2 hari yang lalu</td>
+                                <td><span class="badge bg-warning">Diproses</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Lihat</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    // Animasi tambahan menggunakan Anime.js
-    document.addEventListener('DOMContentLoaded', function() {
-        // Animasi untuk kartu-kartu dashboard
-        anime({
-            targets: '.card',
-            translateY: [-20, 0],
-            opacity: [0, 1],
-            scale: [0.95, 1],
-            delay: anime.stagger(100),
-            duration: 800,
-            easing: 'easeOutCubic'
-        });
-        
-        // Animasi untuk ikon dalam kartu
-        anime({
-            targets: '.bg-primary\\.bg-opacity-10, .bg-success\\.bg-opacity-10',
-            scale: [{value: 0.8}, {value: 1.1}, {value: 1}],
-            duration: 1000,
-            easing: 'easeInOutQuad',
-            delay: anime.stagger(200, {start: 500}),
-            loop: false
-        });
-        
-        // Animasi untuk statistik
-        anime({
-            targets: '.h5',
-            innerHTML: [0, el => parseInt(el.textContent)],
-            round: 1,
-            duration: 2000,
-            easing: 'easeOutQuad',
-            delay: anime.stagger(300, {start: 1000})
-        });
+    // Chart untuk statistik penduduk
+    const ctx = document.getElementById('populationChart').getContext('2d');
+    const populationChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+            datasets: [{
+                label: 'Jumlah Penduduk',
+                data: [1200, 1220, 1230, 1240, 1245, 1250],
+                borderColor: 'rgb(67, 97, 238)',
+                backgroundColor: 'rgba(67, 97, 238, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 </script>
+
+<?php
+// Tampilkan footer dashboard
+require_once __DIR__ . '/../templates/dashboard_admin_footer.php';
+?>

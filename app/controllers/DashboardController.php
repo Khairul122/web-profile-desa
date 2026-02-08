@@ -12,11 +12,7 @@ class DashboardController extends \User\WebDesa\Core\Controller
     public function admin()
     {
         $data['judul'] = 'Dashboard Admin';
-        $data['role'] = 'Admin';
-        
-        $this->view('templates/header', $data);
         $this->view('dashboard/admin', $data);
-        $this->view('templates/footer');
     }
     
     /**
@@ -25,11 +21,7 @@ class DashboardController extends \User\WebDesa\Core\Controller
     public function kepaladesa()
     {
         $data['judul'] = 'Dashboard Kepala Desa';
-        $data['role'] = 'Kepala Desa';
-        
-        $this->view('templates/header', $data);
         $this->view('dashboard/kepaladesa', $data);
-        $this->view('templates/footer');
     }
     
     /**
@@ -38,10 +30,6 @@ class DashboardController extends \User\WebDesa\Core\Controller
     public function sekretaris()
     {
         $data['judul'] = 'Dashboard Sekretaris';
-        $data['role'] = 'Sekretaris';
-        
-        $this->view('templates/header', $data);
         $this->view('dashboard/sekretaris', $data);
-        $this->view('templates/footer');
     }
 }

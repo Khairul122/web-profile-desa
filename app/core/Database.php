@@ -102,4 +102,12 @@ class Database
     {
         return $this->stmt->rowCount();
     }
+
+    /**
+     * Method untuk mendapatkan ID terakhir yang diinsert
+     */
+    public function insertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }

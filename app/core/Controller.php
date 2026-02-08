@@ -12,8 +12,10 @@ class Controller
     public function view($view, $data = [])
     {
         $viewPath = '../app/views/' . $view . '.php';
-        
+
         if (file_exists($viewPath)) {
+            // Untuk view dashboard, kita perlu mengizinkan passing data
+            extract($data);
             require_once $viewPath;
         } else {
             die('View tidak ditemukan: ' . $viewPath);

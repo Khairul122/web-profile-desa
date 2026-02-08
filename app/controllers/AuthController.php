@@ -88,10 +88,7 @@ class AuthController extends \User\WebDesa\Core\Controller
      */
     public function logout()
     {
-        // Hapus semua session
         session_destroy();
-        
-        // Redirect ke halaman login dengan alert
         echo "<script>alert('Anda telah berhasil logout.'); window.location.href='" . BASE_URL . "/auth/login';</script>";
         exit;
     }

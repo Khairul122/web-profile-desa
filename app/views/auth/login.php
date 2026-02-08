@@ -95,7 +95,10 @@
                     <?php 
                     // Tampilkan pesan flash jika ada
                     require_once '../app/core/Flasher.php';
-                    echo \User\WebDesa\Core\Flasher::getMessage();
+                    $flashMessage = \User\WebDesa\Core\Flasher::getMessage();
+                    if (!empty($flashMessage)) {
+                        echo $flashMessage;
+                    }
                     ?>
                     
                     <form action="<?= BASE_URL ?>/auth/prosesLogin" method="post">
