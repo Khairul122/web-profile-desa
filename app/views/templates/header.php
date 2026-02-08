@@ -54,16 +54,23 @@
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hi, <?= $_SESSION['username'] ?>
+                                Hi, <?= htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') ?>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <?php if ($_SESSION['role'] === 'admin'): ?>
-                                    <li><a class="dropdown-item" href="<?= BASE_URL ?>/dashboard/admin">Dashboard Admin</a></li>
-                                <?php elseif ($_SESSION['role'] === 'kepala_desa'): ?>
-                                    <li><a class="dropdown-item" href="<?= BASE_URL ?>/dashboard/kepaladesa">Dashboard Kepala Desa</a></li>
-                                <?php elseif ($_SESSION['role'] === 'sekretaris'): ?>
-                                    <li><a class="dropdown-item" href="<?= BASE_URL ?>/dashboard/sekretaris">Dashboard Sekretaris</a></li>
-                                <?php endif; ?>
+                                <?php 
+                                $role = $_SESSION['role'] ?? '';
+                                switch($role) {
+                                    case 'admin':
+                                        echo '<li><a class="dropdown-item" href="' . BASE_URL . '/dashboard/admin">Dashboard Admin</a></li>';
+                                        break;
+                                    case 'kepdes':
+                                        echo '<li><a class="dropdown-item" href="' . BASE_URL . '/dashboard/kepaladesa">Dashboard Kepala Desa</a></li>';
+                                        break;
+                                    case 'sekdes':
+                                        echo '<li><a class="dropdown-item" href="' . BASE_URL . '/dashboard/sekretaris">Dashboard Sekretaris</a></li>';
+                                        break;
+                                }
+                                ?>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item text-danger" href="<?= BASE_URL ?>/auth/logout">Logout</a></li>
                             </ul>

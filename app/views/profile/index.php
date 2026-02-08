@@ -24,8 +24,8 @@ echo Flasher::getMessage();
                     <thead class="table-light">
                         <tr>
                             <th class="text-center" style="width: 60px;">No</th>
+                            <th>Judul</th>
                             <th>Keterangan</th>
-                            <th>Slug</th>
                             <th class="text-center" style="width: 140px;">Aksi</th>
                         </tr>
                     </thead>
@@ -34,15 +34,19 @@ echo Flasher::getMessage();
                             <tr>
                                 <td class="text-center"><?= $index + 1 ?></td>
                                 <td>
-                                    <div class="fw-semibold"><?= htmlspecialchars(substr($profile['keterangan'], 0, 100)) ?><?= strlen($profile['keterangan']) > 100 ? '...' : '' ?></div>
+                                    <div class="fw-semibold"><?= htmlspecialchars($profile['judul']) ?></div>
                                     <small class="text-muted"><?= date('d M Y', strtotime($profile['created_at'])) ?></small>
                                 </td>
-                                <td><code class="bg-light px-2 py-1 rounded"><?= htmlspecialchars($profile['slug']) ?></code></td>
+                                <td>
+                                    <div style="max-height: 100px; overflow: hidden;">
+                                        <?= htmlspecialchars(substr(strip_tags($profile['keterangan']), 0, 100)) . (strlen(strip_tags($profile['keterangan'])) > 100 ? '...' : '') ?>
+                                    </div>
+                                </td>
                                 <td class="text-center">
                                     <a href="<?= BASE_URL ?>/profile/edit/<?= $profile['id_profile'] ?>" class="btn btn-sm btn-outline-primary" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-outline-danger" title="Hapus" onclick="confirmDelete(<?= $profile['id_profile'] ?>, '<?= htmlspecialchars(substr($profile['slug'], 0, 30)) ?>')">
+                                    <button class="btn btn-sm btn-outline-danger" title="Hapus" onclick="confirmDelete(<?= $profile['id_profile'] ?>, '<?= htmlspecialchars(substr($profile['judul'], 0, 30)) ?>')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
@@ -56,8 +60,8 @@ echo Flasher::getMessage();
 </div>
 
 <script>
-function confirmDelete(id, slug) {
-    if (confirm('Yakin ingin menghapus profile "' + slug + '"?')) {
+function confirmDelete(id, judul) {
+    if (confirm('Yakin ingin menghapus profile "' + judul + '"?')) {
         window.location.href = '<?= BASE_URL ?>/profile/delete/' + id;
     }
 }

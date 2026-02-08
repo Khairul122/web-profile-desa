@@ -25,20 +25,20 @@ class ProfileModel
         return $this->db->single();
     }
 
-    public function getBySlug($slug)
+    public function getByJudul($judul)
     {
-        $this->db->query('SELECT * FROM `profile` WHERE slug = :slug');
-        $this->db->bind(':slug', $slug);
+        $this->db->query('SELECT * FROM `profile` WHERE judul = :judul');
+        $this->db->bind(':judul', $judul);
         return $this->db->single();
     }
 
     public function insert($data)
     {
-        $query = "INSERT INTO `profile` (keterangan, slug, created_at, updated_at) VALUES (:keterangan, :slug, NOW(), NOW())";
+        $query = "INSERT INTO `profile` (judul, keterangan, created_at, updated_at) VALUES (:judul, :keterangan, NOW(), NOW())";
 
         $this->db->query($query);
+        $this->db->bind(':judul', $data['judul']);
         $this->db->bind(':keterangan', $data['keterangan']);
-        $this->db->bind(':slug', $data['slug']);
 
         $this->db->execute();
         return $this->db->insertId();
@@ -46,12 +46,12 @@ class ProfileModel
 
     public function update($data)
     {
-        $query = "UPDATE `profile` SET keterangan=:keterangan, slug=:slug, updated_at=NOW() WHERE id_profile=:id";
+        $query = "UPDATE `profile` SET judul=:judul, keterangan=:keterangan, updated_at=NOW() WHERE id_profile=:id";
 
         $this->db->query($query);
         $this->db->bind(':id', $data['id_profile']);
+        $this->db->bind(':judul', $data['judul']);
         $this->db->bind(':keterangan', $data['keterangan']);
-        $this->db->bind(':slug', $data['slug']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -66,14 +66,14 @@ class ProfileModel
         return $this->db->rowCount();
     }
 
-    public function slugExists($slug, $excludeId = null)
+    public function judulExists($judul, $excludeId = null)
     {
-        $query = "SELECT COUNT(*) as total FROM `profile` WHERE slug = :slug";
+        $query = "SELECT COUNT(*) as total FROM `profile` WHERE judul = :judul";
         if ($excludeId) {
             $query .= " AND id_profile != :exclude_id";
         }
         $this->db->query($query);
-        $this->db->bind(':slug', $slug);
+        $this->db->bind(':judul', $judul);
         if ($excludeId) {
             $this->db->bind(':exclude_id', $excludeId);
         }

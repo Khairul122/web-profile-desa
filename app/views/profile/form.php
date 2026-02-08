@@ -9,17 +9,16 @@
     <div class="card">
         <div class="card-body">
             <div class="mb-3">
-                <label class="form-label fw-semibold">Slug <span class="text-danger">*</span></label>
-                <div class="input-group">
-                    <span class="input-group-text"><?= BASE_URL ?>/p/</span>
-                    <input type="text" name="slug" class="form-control" id="slug" placeholder="Contoh: sejarah-desa" value="<?= htmlspecialchars($data['profile']['slug'] ?? '') ?>" required>
-                </div>
-                <small class="text-muted">Slug untuk URL profile</small>
+                <label class="form-label fw-semibold">Judul <span class="text-danger">*</span></label>
+                <input type="text" name="judul" class="form-control" id="judul" placeholder="Masukkan judul profile" value="<?= htmlspecialchars($data['profile']['judul'] ?? '') ?>" required>
+                <small class="text-muted">Judul profile</small>
             </div>
 
             <div class="mb-3">
                 <label class="form-label fw-semibold">Keterangan <span class="text-danger">*</span></label>
-                <textarea name="keterangan" class="form-control" id="keterangan" rows="15" placeholder="Tuliskan profile desa di sini..." required><?= isset($data['profile']['keterangan']) ? html_entity_decode($data['profile']['keterangan']) : '' ?></textarea>
+                <div id="keterangan" name="keterangan">
+                    <?= $data['profile']['keterangan'] ?? '' ?>
+                </div>
             </div>
 
             <div class="d-flex gap-2">
@@ -53,6 +52,9 @@ $(document).ready(function() {
             ['view', ['fullscreen', 'codeview']]
         ],
         callbacks: {
+            onInit: function() {
+                $('.note-editable img').addClass('img-fluid');
+            },
             onImageUpload: function(files) {
                 uploadImage(files[0]);
             }
@@ -69,13 +71,28 @@ $(document).ready(function() {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(url) {
-                $('#keterangan').summernote('insertImage', url);
+            success: function(imageUrl) {
+                if (imageUrl) {
+                    $('#keterangan').summernote('insertImage', imageUrl, function($image) {
+                        $image.attr('src', imageUrl);
+                        $image.addClass('img-fluid');
+                    });
+                }
             },
             error: function() {
                 alert('Gagal mengupload gambar');
             }
         });
     }
+    
+    $('#profileForm').on('submit', function(e) {
+        var keteranganContent = $('#keterangan').summernote('code');
+        
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'keterangan',
+            value: keteranganContent
+        }).appendTo($(this));
+    });
 });
 </script>

@@ -38,4 +38,34 @@ class Controller
             die('Model tidak ditemukan: ' . $modelPath);
         }
     }
+
+    /**
+     * Convert relative image URLs to absolute URLs for rich text editor
+     */
+    public function convertRelativeToAbsoluteUrls($content)
+    {
+        if (empty($content)) {
+            return '';
+        }
+
+        $baseUrl = rtrim(BASE_URL, '/');
+
+        $content = preg_replace_callback(
+            '/<img[^>]*src=["\']([^"\']+)["\'][^>]*>/i',
+            function($matches) use ($baseUrl) {
+                $fullTag = $matches[0];
+                $src = $matches[1];
+
+                if (strpos($src, '../../public/uploads/profile/') !== false) {
+                    $filename = basename($src);
+                    return str_replace($src, $baseUrl . '/public/uploads/profile/' . $filename, $fullTag);
+                }
+
+                return $fullTag;
+            },
+            $content
+        );
+
+        return $content;
+    }
 }

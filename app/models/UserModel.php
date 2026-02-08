@@ -41,18 +41,18 @@ class UserModel
     public function tambahUser($data)
     {
         $query = "INSERT INTO users (username, password, email, no_hp, nama_lengkap, role, is_active) VALUES (:username, :password, :email, :no_hp, :nama_lengkap, :role, :is_active)";
-        
+
         $this->db->query($query);
         $this->db->bind(':username', $data['username']);
-        $this->db->bind(':password', hash('sha256', $data['password'])); // Hash password dengan SHA-256
+        $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT)); // Hash password dengan password_hash
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':no_hp', $data['no_hp']);
         $this->db->bind(':nama_lengkap', $data['nama_lengkap']);
         $this->db->bind(':role', $data['role']);
         $this->db->bind(':is_active', $data['is_active']);
-        
+
         $this->db->execute();
-        
+
         return $this->db->rowCount();
     }
     
@@ -83,28 +83,38 @@ class UserModel
     public function updatePassword($id, $password)
     {
         $query = "UPDATE users SET password=:password WHERE id_user=:id";
-        
+
         $this->db->query($query);
         $this->db->bind(':id', $id);
-        $this->db->bind(':password', hash('sha256', $password)); // Hash password dengan SHA-256
-        
+        $this->db->bind(':password', password_hash($password, PASSWORD_DEFAULT)); // Hash password dengan password_hash
+
         $this->db->execute();
-        
+
         return $this->db->rowCount();
     }
     
+    /**
+     * Method untuk mendapatkan user berdasarkan email
+     */
+    public function getUserByEmail($email)
+    {
+        $this->db->query('SELECT * FROM users WHERE email = :email');
+        $this->db->bind(':email', $email);
+        return $this->db->single();
+    }
+
     /**
      * Method untuk hapus user
      */
     public function deleteUser($id)
     {
         $query = "DELETE FROM users WHERE id_user = :id";
-        
+
         $this->db->query($query);
         $this->db->bind(':id', $id);
-        
+
         $this->db->execute();
-        
+
         return $this->db->rowCount();
     }
 }

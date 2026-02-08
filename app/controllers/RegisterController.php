@@ -61,12 +61,8 @@ class RegisterController extends \User\WebDesa\Core\Controller
             exit;
         }
         
-        // Cek apakah email sudah digunakan dengan membuat objek database baru
-        $db = new \User\WebDesa\Core\Database();
-        $db->query('SELECT * FROM users WHERE email = :email');
-        $db->bind(':email', $email);
-        $existingEmail = $db->single();
-        
+        // Cek apakah email sudah digunakan dengan menggunakan model
+        $existingEmail = $this->userModel->getUserByEmail($email);
         if ($existingEmail) {
             echo "<script>alert('Email sudah digunakan!'); window.location.href='" . BASE_URL . "/register';</script>";
             exit;

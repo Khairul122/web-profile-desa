@@ -39,20 +39,18 @@ class ProfileController extends \User\WebDesa\Core\Controller
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $slug = $_POST['slug'] ?? '';
-            if (empty($slug)) {
-                $slug = $this->createSlug($_POST['keterangan'] ?? '');
-            }
+            $judul = $_POST['judul'] ?? '';
+            $keterangan = $_POST['keterangan'] ?? '';
 
-            if ($this->model->slugExists($slug)) {
-                Flasher::setMessage('danger', 'Slug sudah digunakan!');
+            if ($this->model->judulExists($judul)) {
+                Flasher::setMessage('danger', 'Judul sudah digunakan!');
                 header('Location: ' . BASE_URL . '/profile/create');
                 exit;
             }
 
             $data = [
-                'keterangan' => $_POST['keterangan'] ?? '',
-                'slug' => $slug
+                'judul' => $judul,
+                'keterangan' => $keterangan
             ];
 
             if ($this->model->insert($data)) {
@@ -71,13 +69,16 @@ class ProfileController extends \User\WebDesa\Core\Controller
         $data['judul'] = 'Edit Profile';
         $data['page'] = 'profile';
         $data['action'] = 'edit';
-        $data['profile'] = $this->model->getById($id);
+        $profile = $this->model->getById($id);
 
-        if (!$data['profile']) {
+        if (!$profile) {
             Flasher::setMessage('danger', 'Profile tidak ditemukan!');
             header('Location: ' . BASE_URL . '/profile/index');
             exit;
         }
+
+        $profile['keterangan'] = $this->convertPathForEditor($profile['keterangan']);
+        $data['profile'] = $profile;
 
         $this->view('templates/dashboard_admin_layout', $data);
         $this->view('profile/form', $data);
@@ -87,21 +88,19 @@ class ProfileController extends \User\WebDesa\Core\Controller
     public function update($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $slug = $_POST['slug'] ?? '';
-            if (empty($slug)) {
-                $slug = $this->createSlug($_POST['keterangan'] ?? '');
-            }
+            $judul = $_POST['judul'] ?? '';
+            $keterangan = $_POST['keterangan'] ?? '';
 
-            if ($this->model->slugExists($slug, $id)) {
-                Flasher::setMessage('danger', 'Slug sudah digunakan!');
+            if ($this->model->judulExists($judul, $id)) {
+                Flasher::setMessage('danger', 'Judul sudah digunakan!');
                 header('Location: ' . BASE_URL . '/profile/edit/' . $id);
                 exit;
             }
 
             $data = [
                 'id_profile' => $id,
-                'keterangan' => $_POST['keterangan'] ?? '',
-                'slug' => $slug
+                'judul' => $judul,
+                'keterangan' => $keterangan
             ];
 
             if ($this->model->update($data)) {
@@ -127,9 +126,9 @@ class ProfileController extends \User\WebDesa\Core\Controller
         exit;
     }
 
-    public function show($slug)
+    public function show($judul)
     {
-        return $this->model->getBySlug($slug);
+        return $this->model->getByJudul($judul);
     }
 
     public function uploadImage()
@@ -147,7 +146,7 @@ class ProfileController extends \User\WebDesa\Core\Controller
             $allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
             if (in_array($imageFileType, $allowedTypes)) {
                 if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadFile)) {
-                    echo BASE_URL . '/uploads/profile/' . $fileName;
+                    echo BASE_URL_GAMBAR_PROFILE . '/' . $fileName;
                     exit;
                 }
             }
@@ -155,11 +154,33 @@ class ProfileController extends \User\WebDesa\Core\Controller
         echo '';
     }
 
-    private function createSlug($text)
+    /**
+     * Convert BASE_URL_GAMBAR_PROFILE path to ../../public/uploads/profile/ format
+     */
+    public function convertPathForEditor($content)
     {
-        $text = strtolower($text);
-        $text = preg_replace('/[^a-z0-9]+/', '-', $text);
-        $text = trim($text, '-');
-        return $text;
+        if (empty($content)) {
+            return '';
+        }
+
+        $basePath = rtrim(BASE_URL_GAMBAR_PROFILE, '/');
+
+        $content = preg_replace_callback(
+            '/<img[^>]*src=["\']([^"\']+)["\'][^>]*>/i',
+            function($matches) use ($basePath) {
+                $fullTag = $matches[0];
+                $src = $matches[1];
+
+                if (strpos($src, $basePath) !== false) {
+                    $filename = basename($src);
+                    return str_replace($src, '../../public/uploads/profile/' . $filename, $fullTag);
+                }
+
+                return $fullTag;
+            },
+            $content
+        );
+
+        return $content;
     }
 }

@@ -16,7 +16,7 @@ class Flasher
             'text' => $message
         ];
     }
-    
+
     /**
      * Method untuk menampilkan pesan
      */
@@ -25,9 +25,12 @@ class Flasher
         if (isset($_SESSION['message'])) {
             $message = $_SESSION['message'];
             unset($_SESSION['message']);
+
+            // Escape untuk mencegah XSS
+            $escapedText = addslashes(htmlspecialchars($message['text'], ENT_QUOTES, 'UTF-8'));
             
             // Return script alert sederhana untuk ditampilkan di view
-            return '<script>alert("' . $message['text'] . '");</script>';
+            return '<script>alert("' . $escapedText . '");</script>';
         }
         return '';
     }
