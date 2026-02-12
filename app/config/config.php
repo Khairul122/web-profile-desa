@@ -13,6 +13,7 @@ define('BASE_URL_GAMBAR_BERITA', '../public/uploads/berita');
 define('BASE_URL_GAMBAR_GALERI', '../public/uploads/galeri');
 define('BASE_URL_GAMBAR_PENGURUS', '../public/uploads/pengurus');
 define('BASE_URL_GAMBAR_PROFILE', '../public/uploads/profile');
+define('BASE_URL_GAMBAR_PENGADUAN', '../public/uploads/pengaduan');
 // Konfigurasi folder
 define('BASE_PATH', dirname(dirname(__DIR__)));
 

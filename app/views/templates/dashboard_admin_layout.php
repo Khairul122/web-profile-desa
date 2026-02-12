@@ -387,6 +387,12 @@ ob_start();
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link <?= isset($data['page']) && $data['page'] == 'pengaduan' ? 'active' : '' ?>" href="<?= BASE_URL ?>/pengaduan/index">
+                    <i class="fas fa-comments"></i>
+                    <span>Kelola Pengaduan</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link <?= isset($data['page']) && $data['page'] == 'pengaturan' ? 'active' : '' ?>" href="#">
                     <i class="fas fa-cog"></i>
                     <span>Pengaturan</span>

@@ -12,9 +12,6 @@ $routes = [
     'auth/prosesLogin' => ['controller' => 'AuthController', 'method' => 'prosesLogin'],
     'auth/logout' => ['controller' => 'AuthController', 'method' => 'logout'],
     
-    // Route untuk registrasi
-    'register' => ['controller' => 'RegisterController', 'method' => 'index'],
-    'register/prosesRegister' => ['controller' => 'RegisterController', 'method' => 'prosesRegister'],
     
     // Route untuk dashboard
     'dashboard/admin' => ['controller' => 'DashboardController', 'method' => 'admin'],
@@ -59,6 +56,13 @@ $routes = [
     'profile/delete/([0-9]+)' => ['controller' => 'ProfileController', 'method' => 'delete'],
     'profile/uploadImage' => ['controller' => 'ProfileController', 'method' => 'uploadImage'],
     'p/([a-z0-9-]+)' => ['controller' => 'ProfileController', 'method' => 'show'],
+
+    // Route untuk pengaduan
+    'pengaduan' => ['controller' => 'PengaduanController', 'method' => 'index'],
+    'pengaduan/index' => ['controller' => 'PengaduanController', 'method' => 'index'],
+    'pengaduan/detail/([0-9]+)' => ['controller' => 'PengaduanController', 'method' => 'detail'],
+    'pengaduan/delete/([0-9]+)' => ['controller' => 'PengaduanController', 'method' => 'delete'],
+    'pengaduan/updateStatus/([0-9]+)' => ['controller' => 'PengaduanController', 'method' => 'updateStatus'],
 ];
 
 return $routes;

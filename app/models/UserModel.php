@@ -44,7 +44,7 @@ class UserModel
 
         $this->db->query($query);
         $this->db->bind(':username', $data['username']);
-        $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT)); // Hash password dengan password_hash
+        $this->db->bind(':password', hash('sha256', $data['password'])); // Hash password dengan SHA256 - PERHATIAN: Gunakan dengan hati-hati karena kurang aman daripada password_hash()
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':no_hp', $data['no_hp']);
         $this->db->bind(':nama_lengkap', $data['nama_lengkap']);
@@ -86,7 +86,7 @@ class UserModel
 
         $this->db->query($query);
         $this->db->bind(':id', $id);
-        $this->db->bind(':password', password_hash($password, PASSWORD_DEFAULT)); // Hash password dengan password_hash
+        $this->db->bind(':password', hash('sha256', $password)); // Hash password dengan SHA256 - PERHATIAN: Gunakan dengan hati-hati karena kurang aman daripada password_hash()
 
         $this->db->execute();
 

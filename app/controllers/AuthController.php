@@ -49,8 +49,8 @@ class AuthController extends \User\WebDesa\Core\Controller
                 exit;
             }
             
-            // Verifikasi password (menggunakan password_verify karena sekarang pakai password_hash)
-            if (password_verify($password, $user['password'])) {
+            // Verifikasi password SHA256
+            if (hash('sha256', $password) === $user['password']) {
                 // Simpan informasi user ke session
                 $_SESSION['user_id'] = $user['id_user'];
                 $_SESSION['username'] = $user['username'];
