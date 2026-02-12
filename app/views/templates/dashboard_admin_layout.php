@@ -15,6 +15,8 @@ ob_start();
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <style>
         :root {
@@ -390,6 +392,18 @@ ob_start();
                 <a class="nav-link <?= isset($data['page']) && $data['page'] == 'pengaduan' ? 'active' : '' ?>" href="<?= BASE_URL ?>/pengaduan/index">
                     <i class="fas fa-comments"></i>
                     <span>Kelola Pengaduan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= isset($data['page']) && $data['page'] == 'pesan' ? 'active' : '' ?>" href="<?= BASE_URL ?>/pesan/index">
+                    <i class="fas fa-envelope"></i>
+                    <span>Kelola Pesan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= isset($data['page']) && $data['page'] == 'sosmed' ? 'active' : '' ?>" href="<?= BASE_URL ?>/sosmed/index">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Kelola Sosial Media</span>
                 </a>
             </li>
             <li class="nav-item">

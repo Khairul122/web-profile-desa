@@ -63,6 +63,24 @@ $routes = [
     'pengaduan/detail/([0-9]+)' => ['controller' => 'PengaduanController', 'method' => 'detail'],
     'pengaduan/delete/([0-9]+)' => ['controller' => 'PengaduanController', 'method' => 'delete'],
     'pengaduan/updateStatus/([0-9]+)' => ['controller' => 'PengaduanController', 'method' => 'updateStatus'],
+    // Route untuk pesan
+    'pesan' => ['controller' => 'PesanController', 'method' => 'index'],
+    'pesan/index' => ['controller' => 'PesanController', 'method' => 'index'],
+    'pesan/detail/([0-9]+)' => ['controller' => 'PesanController', 'method' => 'detail'],
+    'pesan/delete/([0-9]+)' => ['controller' => 'PesanController', 'method' => 'delete'],
+    'pesan/updateStatus/([0-9]+)' => ['controller' => 'PesanController', 'method' => 'updateStatus'],
+    'pesan/markAsRead/([0-9]+)' => ['controller' => 'PesanController', 'method' => 'markAsRead'],
+    'pesan/markAsUnread/([0-9]+)' => ['controller' => 'PesanController', 'method' => 'markAsUnread'],
+    
+    // Route untuk sosial media
+    'sosmed' => ['controller' => 'SosmedController', 'method' => 'index'],
+    'sosmed/index' => ['controller' => 'SosmedController', 'method' => 'index'],
+    'sosmed/create' => ['controller' => 'SosmedController', 'method' => 'create'],
+    'sosmed/store' => ['controller' => 'SosmedController', 'method' => 'store'],
+    'sosmed/edit/([0-9]+)' => ['controller' => 'SosmedController', 'method' => 'edit'],
+    'sosmed/update/([0-9]+)' => ['controller' => 'SosmedController', 'method' => 'update'],
+    'sosmed/delete/([0-9]+)' => ['controller' => 'SosmedController', 'method' => 'delete'],
+    'sosmed/toggleStatus/([0-9]+)' => ['controller' => 'SosmedController', 'method' => 'toggleStatus'],
 ];
 
 return $routes;
